@@ -1,0 +1,20 @@
+.footer {
+  min-height: 75px;
+  width: calc(100%);
+  background: $primary-gradient;
+  border-top-left-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 15px;
+
+  a {
+    text-decoration: none;
+  }
+
+  .footer_text {
+    font-size: $default-size;
+    font-weight: 400;
+    color: #b15300;
+  }
+}

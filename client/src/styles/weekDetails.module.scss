@@ -1,0 +1,113 @@
+.weekDetails {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  align-items: center;
+
+  h1 {
+    color: $black;
+    font-size: $default-size;
+  }
+}
+
+.detailContainer {
+  width: 100%;
+  min-height: 50px;
+  height: 5vw;
+  background-color: white;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.175);
+  border-radius: 15px;
+  margin: 15px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 25px;
+  flex-wrap: wrap;
+
+  .detail_note {
+    display: flex;
+    align-items: center;
+    font-size: $default-size;
+  }
+
+  .detail_question_mark {
+    transition: 250ms;
+    min-height: 30px;
+    width: 2.5vw;
+    height: 2.5vw;
+    font-size: $default-size;
+    color: rgba(0, 0, 0, 0.25);
+    min-width: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0px 10px;
+
+    @media (max-width: 750px) {
+      display: none;
+      margin: 0px;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  .detail_question_mark:hover ~ .detailNote .detail_tooltip {
+    transform: translateY(-115%);
+    opacity: 1;
+  }
+
+  .detailName,
+  .detailValue {
+    font-weight: 500;
+    color: $black;
+    font-size: $default-size;
+  }
+
+  @media (max-width: 1000px) {
+    height: auto;
+  }
+
+  .detailNote {
+    height: 50%;
+    width: 1%;
+    min-width: min-content;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #047100;
+    background-color: rgba(0, 255, 0, 0.1);
+    margin: 10px 0px;
+    position: relative;
+
+    .detail_tooltip {
+      transition: 250ms;
+      min-width: 200px;
+      min-height: 105px;
+      width: 12.5vw;
+      height: 7.5vw;
+      border-radius: 25px;
+      background-color: white;
+      position: absolute;
+      border: 1px solid lightgrey;
+      // box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.175);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgba(0, 0, 0, 0.35);
+      transform: translateY(-110%);
+      top: 0;
+      white-space: pre-wrap;
+      padding: 25px 15px;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}

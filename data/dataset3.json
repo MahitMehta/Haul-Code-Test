@@ -1,0 +1,632 @@
+{
+    "data": [
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-06T13:05:00.000Z",
+            "endTime": "2021-03-07T15:59:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        },
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-07T13:05:00.000Z",
+            "endTime": "2021-03-08T22:59:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        },
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-08T13:05:00.000Z",
+            "endTime": "2021-03-09T21:55:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        },
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-09T13:05:00.000Z",
+            "endTime": "2021-03-10T15:59:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        },
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-10T13:05:00.000Z",
+            "endTime": "2021-03-11T21:59:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        },
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-11T13:05:00.000Z",
+            "endTime": "2021-03-12T22:59:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        },
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-12T13:05:00.000Z",
+            "endTime": "2021-03-13T20:59:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 27882262,
+                "onDutyDurationMs": 22725336,
+                "driveDurationMs": 5156926,
+                "offDutyDurationMs": 58517738,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        },
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-13T13:05:00.000Z",
+            "endTime": "2021-03-14T21:55:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        },
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-14T13:05:00.000Z",
+            "endTime": "2021-03-15T15:59:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 82800000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 82800000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        },
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-15T13:05:00.000Z",
+            "endTime": "2021-03-16T21:59:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        },
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-16T13:05:00.000Z",
+            "endTime": "2021-03-17T23:59:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 86400000,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        },
+        {
+            "driver": {
+                "timezone": "America/Los_Angeles",
+                "eldSettings": {
+                    "rulesets": [
+                        {
+                            "cycle": "TX 70 hour / 7 day",
+                            "jurisdiction": "TX",
+                            "restart": "24-hour Restart",
+                            "shift": "Texas Intrastate"
+                        },
+                        {
+                            "break": "Property (off-duty/sleeper)",
+                            "cycle": "USA 70 hour / 8 day",
+                            "restart": "34-hour Restart",
+                            "shift": "US Interstate Property"
+                        }
+                    ]
+                },
+                "id": "abc1234",
+                "name": "John Smith"
+            },
+            "startTime": "2021-03-17T13:05:00.000Z",
+            "endTime": "2021-03-18T21:59:01.000Z",
+            "logMetaData": {
+                "shippingDocs": "",
+                "isCertified": false
+            },
+            "distanceTraveled": {
+                "driveDistanceMeters": 0
+            },
+            "dutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 75815321,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            },
+            "pendingDutyStatusDurations": {
+                "activeDurationMs": 0,
+                "onDutyDurationMs": 0,
+                "driveDurationMs": 0,
+                "offDutyDurationMs": 75815321,
+                "sleeperBerthDurationMs": 0,
+                "yardMoveDurationMs": 0,
+                "personalConveyanceDurationMs": 0,
+                "waitingTimeDurationMs": 0
+            }
+        }
+    ],
+    "pagination": {
+        "endCursor": "",
+        "hasNextPage": false
+    }
+}

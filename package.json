@@ -1,0 +1,20 @@
+{
+  "name": "haul-code-test",
+  "version": "1.0.0",
+  "description": "Haul Code Test made by Mahit Mehta. A console for a Haul Driver to View his Work.",
+  "main": "index.js",
+  "scripts": {
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "test": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": ["Haultwith.us", "Haul", "Code Test", "Mahit", "Mehta"],
+  "author": "Mahit Mehta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
