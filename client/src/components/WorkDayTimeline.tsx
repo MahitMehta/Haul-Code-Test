@@ -6,9 +6,10 @@ import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 // styles
 import styles from "../styles/styles.module.scss";
+import { ReactFragment } from 'react';
 
 type WorkDayTimelineProps = {
-    children: ReactChild
+    children: ReactFragment
 }
 
 type WorkDayTimelineCard = {
@@ -17,8 +18,7 @@ type WorkDayTimelineCard = {
 
 const MONTHS = ["January", "February", "March", "Abril", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-const WorkDayTimeline = ({ children } : WorkDayTimelineProps ) => {
-
+const WorkDayTimelineContent = ({ children } : WorkDayTimelineProps) => {
     const olRef = useRef<any>(null);
     const olRefContainer = useRef<any>(null);
 
@@ -36,12 +36,21 @@ const WorkDayTimeline = ({ children } : WorkDayTimelineProps ) => {
     return (
         <div ref={olRefContainer}  className={styles.workDayTimelineContainerWrapper}>
             <ol ref={olRef} className={styles.workDayTimelineContainer}>
-                { children }
+                { typeof children === "object" && children }
             </ol>
         </div>
     )
 }
 
+const WorkDayTimeline = ({ children } : WorkDayTimelineProps ) => {
+    const WorkDayTimelineMemo = React.memo(WorkDayTimelineContent);
+
+    return (
+        <WorkDayTimelineMemo>
+            { children }
+        </WorkDayTimelineMemo>
+    )
+}
 
 const Card = ({ data } : { data:userLogModel }) => {
     const CardRef = useRef(null);
@@ -49,7 +58,7 @@ const Card = ({ data } : { data:userLogModel }) => {
     useEffect(() => {
         gsap.timeline({
             repeat: 0,
-            delay: 0.25,
+            delay: 0.1,
         }).fromTo(CardRef.current, { opacity: 0, scale: 0.75 }, { opacity: 1, scale: 1, duration: 0.25});
     });
 
@@ -116,17 +125,17 @@ const Card = ({ data } : { data:userLogModel }) => {
 }
 
 WorkDayTimeline.Card = ({ data } : WorkDayTimelineCard) => {
-
-    return <Card data={data} />
+    const CardMemo = React.memo(Card);
+    return <CardMemo data={data} />
 }
 
-const CardNull = ({ data } : { data: object }) => {
+const CardNull = () => {
     const CardRef = useRef(null);
 
     useEffect(() => {
         gsap.timeline({
             repeat: 0,
-            delay: 0.25,
+            delay: 0.1,
         }).fromTo(CardRef.current, { opacity: 0, scale: 0.75 }, { opacity: 1, scale: 1, duration: 0.25});
     });
 
@@ -137,12 +146,9 @@ const CardNull = ({ data } : { data: object }) => {
     )
 }
 
-WorkDayTimeline.CardNull = ({ data } : WorkDayTimelineCard) => {
-
-    return <CardNull data={data} />
+WorkDayTimeline.CardNull = () => {
+    return <CardNull />
 }
-
-
 
 
 export default WorkDayTimeline;

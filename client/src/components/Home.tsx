@@ -30,12 +30,12 @@ const Home = () => {
 
     const [ userDataModified, setUserDataModified ] = useState<Array<userLogModel[]>>([]);
 
-    const [ startCount, setStartCount ] = useState(0);
-    const [ endCount, setEndCount ] = useState(0);
-
     const [ hasNextPage, setHasNextPage ] = useState(false);
     const [ hasPrevPage, setHasPrevPage ] = useState(false);
     const [ forward, setForward ] = useState(false);
+
+    const [ startCount, setStartCount ] = useState(0);
+    const [ endCount, setEndCount ] = useState(0);
     
     const [ currentIndex, setCurrentIndex ] = useState(0);
     const [ currentPage, setCurrentPage ] = useState< number | null >(null);
@@ -44,7 +44,7 @@ const Home = () => {
     const [ dataNull, setDataNull ] = useState(false);
     const [ nextPageQuerying, setNextPageQuerying ] = useState(true);
 
-    const prevData = async (currentPageParam:number|null, hasNextPageParam:boolean, hasPrevPageParam:boolean) => {
+    const prevData = async (currentPageParam:number | null, hasNextPageParam:boolean, hasPrevPageParam:boolean) => {
         await UserDataQueries.queryData(currentPageParam, hasNextPageParam, hasPrevPageParam, true).then(res => res.json())
         .then((response:userDataResponseModel) => {
             if (response.error) {
@@ -65,11 +65,10 @@ const Home = () => {
 
     const queryData = () => {
         setCurrentIndex(0);
-
+        
         if ( userData.length || error || dataNull) {
             if (!nextPageQuerying) return; 
         }
-
         UserDataQueries.queryData(currentPage, hasNextPage, hasPrevPage, forward)
             .then(res => res.json())
             .then(async (response:userDataResponseModel) => {
@@ -88,10 +87,11 @@ const Home = () => {
                 setHasPrevPage(response.hasPrevPage ? response.hasPrevPage : false);
 
                 setCurrentPage(response.page ? response.page : null);
+                
                 if (response.hasPrevPage && response.page) {
                     await prevData(response.page, hasNextPage, hasPrevPage);
                 }
-
+                
                 dispatch(setUserData(userDataResponse));
             }).catch(_ => {
                 setError(true);
@@ -99,7 +99,7 @@ const Home = () => {
     }
 
     const queryUserData = useCallback(() => {
-         queryData();
+        if (nextPageQuerying) queryData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [nextPageQuerying]);
 
@@ -140,12 +140,12 @@ const Home = () => {
 
     const updateExtras = useCallback(() => {
         const currentLog = userDataModified[currentIndex];
-        if (!currentLog) return; 
+        if (!currentLog) return;
         const latestLog = currentLog[currentLog.length - 1];
         if (latestLog?.startTime) {
             const weekDay = new Date(latestLog.startTime).getDay();
             const extraDaysEnd = 6 - weekDay;
-            if (extraDaysEnd > 0 || weekDay === 6) setStartCount(extraDaysEnd);
+            if (extraDaysEnd > 0 || weekDay === 6) setStartCount(extraDaysEnd); 
         }
 
         const oldestLog = currentLog[0];
@@ -155,7 +155,7 @@ const Home = () => {
         }
     }, [currentIndex, userDataModified]);
 
-    useEffect(updateExtras, [ updateExtras, currentIndex ]);   
+    useEffect(updateExtras, [ updateExtras ]);
 
     useEffect(queryUserData, [ queryUserData ]);    
 
@@ -163,12 +163,14 @@ const Home = () => {
 
     const handleBefore = () => {    
         if (currentIndex + 1 < userDataModified.length) {
-            setStartCount(0);
             setEndCount(0);
+            setStartCount(0);
             setCurrentIndex(currentIndex + 1);
         } else if (hasNextPage && currentPage !== null && currentPage > 1) {
-            setStartCount(0);
             setEndCount(0);
+            setStartCount(0);
+            dispatch(setUserData([]));
+            setUserDataModified([]);
             setForward(false);
             setNextPageQuerying(true);
         }
@@ -176,13 +178,14 @@ const Home = () => {
 
     const handleNext = () => {
         if (currentIndex - 1 >= 0) {
-            setStartCount(0);
             setEndCount(0);
+            setStartCount(0);
             setCurrentIndex(currentIndex - 1);
         } else if (hasPrevPage) {
-            setStartCount(0);
             setEndCount(0);
+            setStartCount(0);
             dispatch(setUserData([]));
+            setUserDataModified([]);
             setForward(true);
             setNextPageQuerying(true);
         }
@@ -192,28 +195,28 @@ const Home = () => {
         <React.Fragment>
             <h1 className={styles.header_title}>Driver Console</h1>
             <WorkDayTimeline>
-                <React.Fragment>
+                { userDataModified.length && <React.Fragment>
                     {   
                         endCount ? 
                             userData.length && new Array(endCount).fill(0).map((_, index) => (
-                            <WorkDayTimeline.CardNull key={index} data={{}} />
+                            <WorkDayTimeline.CardNull key={index} />
                         )) : null
                     }
                     {
-                        userDataModified.length ? userData.length && userDataModified[currentIndex].map((_, index) => {
+                        userDataModified.length && userDataModified[currentIndex].map((_, index) => {
                             if (!userDataModified[currentIndex][index]) {
                                 return null; 
                             }
                             return <WorkDayTimeline.Card key={index} data={userDataModified[currentIndex][index]}/>
-                        }) : null
+                        })
                     }
                     {   
                         startCount ? 
                             userData.length && new Array(startCount).fill(0).map((_, index) => (
-                            <WorkDayTimeline.CardNull key={index} data={{}} />
-                        )) : null
+                            <WorkDayTimeline.CardNull key={index}/>
+                        )) : undefined
                     }
-                </React.Fragment>
+                </React.Fragment> }
             </WorkDayTimeline>
             <div className={styles.arrowContainer}>
                 <div onClick={handleBefore} className={styles.arrowCircle}>
