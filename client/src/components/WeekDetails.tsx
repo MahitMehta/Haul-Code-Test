@@ -1,6 +1,15 @@
 import React from 'react';
 import {  userLogModel } from "../types/userData";
 
+// Components
+// import Graph from './Graph';
+import GraphChartJS from './GraphChartJS';
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+
+// import CanvasJSReact from "canvasjs";
+
 // styles
 import styles from "../styles/styles.module.scss";
 
@@ -66,9 +75,8 @@ const Detail = ({ note, value, detailName, warning, tooltip } : DetailProps) => 
         <div className={styles.detailContainer}>
             <h3 className={styles.detailName}>{detailName}</h3>
             <div className={styles.detail_note}>
-                { tooltip && <span className={styles.detail_question_mark}>?</span>}
                 { note && <span 
-                    style={warning ? { backgroundColor: "#FFFABC", color: "#B1A400"} : {}} className={styles.detailNote}>
+                    style={warning ? { backgroundColor: "#FF6161", color: "#8A0000"} : {}} className={styles.detailNote}>
                 { tooltip && <span className={styles.detail_tooltip}>{ tooltip }</span> }
                 {note}</span> }
             </div>
@@ -85,20 +93,31 @@ const WeekDetails = ({ data } : { data: userLogModel[] }) => {
 
     return (
         <React.Fragment>
-            <section className={styles.weekDetails}>
-                <h1>Week Details</h1>
-                <Detail 
-                    note={ overtime ? "Overtime Compensated" : undefined }
-                    value={`Gross Payroll: $${ totalPay }`}
-                    detailName="Week Payroll"
-                />
-                <Detail 
-                    tooltip="By law, each driver can only work 70 hours within a 7 day period."
-                    warning={ totalHours >= MAX_HOURS_PER_WEEK * 0.80 }
-                    note={`Completed ${percentage}% of Max Work Time`}
-                    value={`Hours Worked: ${ totalHours } H`}
-                    detailName="Total Hours Worked"
-                />
+            <section className={styles.weekDetailsContainer}>
+                <h1>
+                    <FontAwesomeIcon icon={faCalendar} className={styles.weekDetailsIcon} />
+                    Week Details
+                </h1>
+                <section className={styles.weekDetails}>
+                    <div className={styles.weekDetailsDiv}>
+                        <GraphChartJS hourData={data}/>
+                        {/* <Graph data={data} /> */}
+                    </div>
+                    <div className={styles.weekDetailsDivDetails}>
+                        <Detail 
+                            note={ overtime ? "Overtime Payed" : undefined }
+                            value={`Gross Payroll: $${ totalPay }`}
+                            detailName="Week Payroll"
+                        />
+                        <Detail 
+                            tooltip="By law, each driver can only work 70 hours within a 7 day period."
+                            warning={ totalHours >= MAX_HOURS_PER_WEEK * 0.80 }
+                            note={`Completed ${percentage}%`}
+                            value={`Hours Worked: ${ totalHours } H`}
+                            detailName="Total Hours Worked"
+                        />
+                    </div>
+                </section>
             </section>
         </React.Fragment>
     )

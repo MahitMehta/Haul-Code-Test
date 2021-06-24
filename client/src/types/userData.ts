@@ -26,7 +26,7 @@ type userDataModelDutyStatus= {
 
 type userDataModelLogs = {
     distanceTraveled?: object
-    driver?: object,
+    driver?: { timezone: any },
     startTime?: string,
     endTime?: string,
     logMetaData?: object,

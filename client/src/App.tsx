@@ -6,11 +6,14 @@ import Home from "./components/Home";
 
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
+
 import userDataReducer from "./Reducers/userDataReducer"; 
+import themeReducer from './Reducers/themeReducer';
 
 function App() {
   const allReducers = combineReducers({
       userData: userDataReducer,
+      theme: themeReducer
   });
 
   const store = createStore(allReducers);
@@ -19,7 +22,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route path="/" component={Home}/>
+          <Route exact path="/" component={Home}/>
           <Redirect to="/" />
         </Switch>
       </Router>

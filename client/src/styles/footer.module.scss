@@ -1,7 +1,7 @@
 .footer {
   min-height: 75px;
   width: calc(100%);
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--dark-blue);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,8 +14,13 @@
   }
 
   .footer_text {
+    transition: 250ms;
     font-size: $default-size;
     font-weight: 400;
-    color: rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.25);
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.35);
+    }
   }
 }

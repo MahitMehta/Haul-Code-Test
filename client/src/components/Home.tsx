@@ -11,6 +11,7 @@ import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons
 import WorkDayTimeline from './WorkDayTimeline';
 import WeekDetails from './WeekDetails';
 import Footer from "./Footer";
+import Navbar from './Navbar';
 
 // styles
 import styles from "../styles/styles.module.scss";
@@ -27,6 +28,9 @@ const Home = () => {
     });
     const userData:userDataSchema = userDataState.userData; 
     const userPrevData:userDataSchema = userDataState.prevUserData; 
+
+    const themeData = useSelector((state:stateModel) => state.theme);
+    const theme = themeData.theme; 
 
     const [ userDataModified, setUserDataModified ] = useState<Array<userLogModel[]>>([]);
 
@@ -155,6 +159,16 @@ const Home = () => {
         }
     }, [currentIndex, userDataModified]);
 
+    useEffect(() => {
+        const darkMode = theme === "dark";
+        document.documentElement.style.setProperty("--card-circle", darkMode ? "#131313" : "rgba(0, 0, 0, 0.1)")
+        document.documentElement.style.setProperty("--card-bottom", darkMode ? "#023047" : "#8ecae6")
+        document.documentElement.style.setProperty("--dark-blue", darkMode ? "#131313" : "#023047")
+        document.documentElement.style.setProperty("--black", darkMode ? "white" : "#023047")
+        document.documentElement.style.setProperty("--theme-primary", darkMode ? "#1E1E1E" : "white")
+        document.documentElement.style.setProperty("--theme-secondary", darkMode ? "#131313" : "white")
+    });
+
     useEffect(updateExtras, [ updateExtras ]);
 
     useEffect(queryUserData, [ queryUserData ]);    
@@ -193,7 +207,16 @@ const Home = () => {
 
     return (
         <React.Fragment>
-            <h1 className={styles.header_title}>Driver Console</h1>
+            <Navbar>
+                <div className={styles.arrowContainer}>
+                    <div onClick={handleBefore} className={styles.arrowCircle}>
+                        <FontAwesomeIcon  className={styles.arrowIconLeft} icon={faChevronLeft} />
+                    </div>
+                    <div onClick={handleNext} className={styles.arrowCircle}>
+                        <FontAwesomeIcon className={styles.arrowIconRight} icon={faChevronRight} />
+                    </div>
+                </div>
+            </Navbar>
             <WorkDayTimeline>
                 { userDataModified.length && <React.Fragment>
                     {   
@@ -218,14 +241,6 @@ const Home = () => {
                     }
                 </React.Fragment> }
             </WorkDayTimeline>
-            <div className={styles.arrowContainer}>
-                <div onClick={handleBefore} className={styles.arrowCircle}>
-                    <FontAwesomeIcon  className={styles.arrowIconLeft} icon={faChevronLeft} />
-                </div>
-                <div onClick={handleNext} className={styles.arrowCircle}>
-                    <FontAwesomeIcon className={styles.arrowIconRight} icon={faChevronRight} />
-                </div>
-            </div>
             <WeekDetails data={userDataModified[currentIndex]} />
             <Footer />
         </React.Fragment>
