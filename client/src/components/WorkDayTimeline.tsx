@@ -1,4 +1,4 @@
-import React, { ReactChild, useRef, useEffect } from 'react';
+import React, { ReactChild, useRef, useEffect, useState } from 'react';
 import { userLogModel } from "../types/userData";
 import { gsap } from "gsap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +7,7 @@ import { faClock } from "@fortawesome/free-solid-svg-icons";
 // styles
 import styles from "../styles/styles.module.scss";
 import { ReactFragment } from 'react';
+import { useCallback } from 'react';
 
 type WorkDayTimelineProps = {
     children: ReactFragment
@@ -52,8 +53,31 @@ const WorkDayTimeline = ({ children } : WorkDayTimelineProps ) => {
     )
 }
 
+const WeekDayCircleJSX = ({ vwOfHours, CIRCLE_RADIUS } : { vwOfHours:string, CIRCLE_RADIUS:string}) => {
+    return (
+        <svg className={styles.weekDayHoursCircleContainer}>
+            <circle className={styles.weekDayHoursCircle} r={CIRCLE_RADIUS} />
+            <circle strokeDashoffset={`calc(calc(${2 * Math.PI} * ${CIRCLE_RADIUS} ) - ${vwOfHours})`} 
+                    className={styles.weekDayHoursCircleOverlay} r={CIRCLE_RADIUS} />
+        </svg>
+    )
+}
+
+const WeekDayCircle = ({ mobileView, percentageOfHours } : { mobileView:boolean, percentageOfHours:number}) => {
+    const WeekDayCircleJSXMemo = React.memo(WeekDayCircleJSX);
+
+    const CIRCLE_RADIUS = mobileView ? "45px" : "4vw";
+    const vwOfHours = 2 * Math.PI * parseInt(CIRCLE_RADIUS.slice(0, -2)) * percentageOfHours; 
+    const dynamicHours = `${vwOfHours.toString()}${CIRCLE_RADIUS.slice(-2)}`;
+
+    return (
+        <WeekDayCircleJSXMemo vwOfHours={dynamicHours} CIRCLE_RADIUS={CIRCLE_RADIUS} />
+    )
+}
+
 const Card = ({ data } : { data:userLogModel }) => {
     const CardRef = useRef(null);
+    const [mobileView, setMobileView] = useState(false);
 
     useEffect(() => {
         gsap.timeline({
@@ -73,18 +97,32 @@ const Card = ({ data } : { data:userLogModel }) => {
     let hourFormattedStart:number = 0;
     let hourFormattedEnd:number = 0;
 
+    let timePeriodStart:string = "";
+    let timePeriodEnd:string = "";
+
     if (data.startTime && data.endTime) {
         const startTimeDate = new Date(data.startTime);
         const endTimeDate = new Date(data.endTime);
 
-        monthFormattedStart = MONTHS[startTimeDate.getMonth()].substring(0, 3);
-        dayFormattedStart = startTimeDate.getDate();
+        const timezone:any = data.driver?.timezone; 
+        const startTimeDateLocal = startTimeDate.toLocaleString("en-US", { timeZone: timezone });
+        const monthNumStart = parseInt(startTimeDateLocal.split(/[/,]/)[0]) - 1; 
 
-        monthFormattedEnd = MONTHS[endTimeDate.getMonth()].substring(0, 3);
-        dayFormattedEnd = endTimeDate.getDate();
+        const dayNumStart = parseInt(startTimeDateLocal.split(/[/,]/)[1]); 
+        monthFormattedStart = MONTHS[monthNumStart].substring(0, 3);
+        dayFormattedStart = dayNumStart
+        hourFormattedStart = parseInt(startTimeDateLocal.split(/[\s:]/)[1]);
+        timePeriodStart = startTimeDateLocal.slice(-2); 
 
-        hourFormattedStart = startTimeDate.getHours()
-        hourFormattedEnd = endTimeDate.getHours()
+        const endTimeDateLocal = endTimeDate.toLocaleString("en-US", { timeZone: timezone });
+        const monthNumEnd = parseInt(endTimeDateLocal.split(/[/,]/)[0]) - 1; 
+
+        const dayNumEnd = parseInt(endTimeDateLocal.split(/[/,]/)[1]); 
+        monthFormattedEnd = MONTHS[monthNumEnd].substring(0, 3);
+        dayFormattedEnd = dayNumEnd;
+        hourFormattedEnd = parseInt(endTimeDateLocal.split(/[\s:]/)[1]);
+
+        timePeriodEnd = endTimeDateLocal.slice(-2); 
     }
 
     let hours:number;
@@ -106,18 +144,48 @@ const Card = ({ data } : { data:userLogModel }) => {
         weekPayment += Math.round(PAY_RATE * (minutes / 60) * 100) / 100;
     }
 
+    const totalMinutes = (60 * hours) + (minutes);
+    const minutesInDay = 60 * 24; 
+    const percentageOfHours = totalMinutes / minutesInDay; 
+
+    const resizeCircle = () => {
+        if (window.innerWidth <= 1100 && !mobileView) {
+            setMobileView(true);
+        } else if (window.innerWidth > 1100 && mobileView) {
+            setMobileView(false);
+        }
+    };
+    
+
+    useEffect(() => {
+        resizeCircle();
+
+        window.addEventListener('resize', () => {
+            resizeCircle();
+        });
+
+        return () => {
+            setMobileView(window.innerWidth <= 1100);
+        }
+    });
+
     return (
         <div ref={CardRef} style={{ opacity: 0 }} className={styles.weekDayCardContainer}>
-            <h4>${weekPayment ? weekPayment : "0.00"}</h4>
-            <h1>{hours} H</h1>
-            <h2>{minutes} <span>MIN</span></h2>
+            <div className={styles.weekDayHours}>
+                <WeekDayCircle mobileView={mobileView} percentageOfHours={percentageOfHours} />
+                <div className={styles.weekDayHoursAmount}>
+                    <h1>{hours} H</h1>
+                    <h2>{minutes} <span>MIN</span></h2>
+                </div>
+            </div>
             <div className={styles.weekDayCardDetails}>
-                <h3>{monthFormattedStart}&nbsp;{dayFormattedStart},&nbsp;{hourFormattedStart > 12 ? hourFormattedStart - 12 : hourFormattedStart}&nbsp;
-                    <span>{hourFormattedStart > 12 ? "PM" : "AM"}</span>
+                <h4>${weekPayment ? weekPayment : "0.00"}</h4>
+                <h3>{monthFormattedStart}&nbsp;{dayFormattedStart},&nbsp;{hourFormattedStart}&nbsp;
+                    <span>{timePeriodStart}</span>
                 </h3>
                 <h3 style={{ marginTop: 5 }}>
-                    {monthFormattedEnd}&nbsp;{dayFormattedEnd}, {hourFormattedEnd > 12 ? hourFormattedEnd - 12 : hourFormattedEnd }&nbsp;
-                    <span>{hourFormattedEnd > 12 ? "PM" : "AM"}</span>
+                    {monthFormattedEnd}&nbsp;{dayFormattedEnd}, {hourFormattedEnd }&nbsp;
+                    <span>{timePeriodEnd}</span>
                 </h3>
             </div>
         </div>

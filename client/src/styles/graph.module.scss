@@ -1,0 +1,12 @@
+.graph_canvas {
+  box-shadow: $primary-box-shadow;
+  width: 100%;
+  height: calc(10vw + 15px);
+  border-radius: 5px;
+
+  @media (max-width: 1076px) {
+    width: calc(100% + 20px);
+    margin-top: 15px;
+    min-height: 150px;
+  }
+}

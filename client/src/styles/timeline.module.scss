@@ -3,7 +3,9 @@
   flex: 1;
   overflow: auto;
   margin: 15px;
-  border-radius: 15px;
+  background: var(--theme-secondary);
+  box-shadow: $primary-box-shadow;
+  border-radius: 5px;
 
   &::-webkit-scrollbar {
     height: 5px;
@@ -20,17 +22,40 @@
   }
 }
 
+.weekDayHoursCircleContainer {
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.weekDayHoursCircleOverlay,
+.weekDayHoursCircle {
+  fill: transparent;
+  stroke-width: 7.5px;
+  stroke: var(--card-circle);
+  transform: translate(50%, 50%);
+}
+
+.weekDayHoursCircleOverlay {
+  stroke: $medium-blue;
+  stroke-dasharray: calc(2 * calc(4vw * 3.14159));
+  transform: translate(50%, 50%) rotate(-90deg);
+
+  @media (max-width: 1000px) {
+    stroke-dasharray: calc(2 * calc(45px * 3.14159));
+  }
+}
+
 .workDayTimelineContainer {
-  border-radius: 15px;
+  border-radius: 5px;
   margin-bottom: 5px;
-  width: calc(100% - 10px);
+  width: calc(100%);
   min-height: 250px;
   min-width: min-content;
   height: 21vw;
-  background: rgb(255, 89, 0);
-  background: $primary-gradient;
+  // background: $primary-gradient;
+  background-color: var(--theme-secondary);
   padding: 0px 0.75vw;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,33 +66,35 @@
   min-height: 235px;
   width: 12.5vw;
   height: calc(20vw - 15px);
-  border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.75);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  background-color: var(--theme-primary);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   margin: 0px 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
 
   .clock_icon {
     font-size: clamp(35px, 3.5vw, 3.5vw);
-    color: rgba(0, 0, 0, 0.1);
+    color: var(--card-circle);
   }
 
   h4 {
+    margin-bottom: 5px;
     font-size: clamp(25px, 2vw, 2vw);
-    color: $black;
+    color: var(--black);
   }
 
   h1 {
-    font-size: clamp(35px, 3.5vw, 3.5vw);
-    color: $black;
+    font-size: clamp(17.5px, 1.5vw, 1.5vw);
+    color: var(--black);
   }
 
   h2 {
     font-size: clamp(17.5px, 1.5vw, 1.5vw);
-    color: $black;
+    color: var(--black);
     display: flex;
     align-items: center;
 
@@ -77,21 +104,34 @@
     }
   }
 
-  .weekDayCardDetails {
-    background-color: rgba(255, 255, 255, 0.35);
+  .weekDayHours {
     flex: 1;
-    width: 100%;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    margin-top: 10px;
+    position: relative;
+  }
+
+  .weekDayHoursAmount {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    margin-top: 5px;
+  }
+
+  .weekDayCardDetails {
+    background-color: var(--card-bottom);
+    width: 100%;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75vw 0vw 1vw 0vw;
 
     h3 {
       font-size: clamp(1rem, 1vw, 1vw);
-      color: $black;
+      color: var(--black);
       font-weight: 500;
 
       span {
@@ -110,7 +150,6 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    border: 2px solid lightgrey;
     margin: 10px 5px;
     cursor: pointer;
     display: flex;

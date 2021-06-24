@@ -9,21 +9,21 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+// Variables
+@import "./variables.module.scss";
+
 body {
   width: 100%;
   min-height: 100vh;
   position: relative;
+  background-color: var(--theme-primary);
 }
 
-.header_title {
-  margin: 1.25vw 0px;
-  width: 100%;
-  text-align: center;
-  font-size: clamp(35px, 2.5vw, 2.5vw);
-}
+// Navbar
+@import "./navbar.module.scss";
 
-// Variables
-@import "./variables.module.scss";
+// Graph
+@import "./graph.module.scss";
 
 // Timeline
 @import "./timeline.module.scss";

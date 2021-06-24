@@ -1,12 +1,49 @@
-.weekDetails {
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-  align-items: center;
+.weekDetailsContainer {
+  transition: 150ms;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  height: auto;
+  padding: 15px;
+  background-color: var(--theme-secondary);
+  width: calc(100% - 30px);
 
   h1 {
-    color: $black;
+    color: var(--black);
+    font-weight: 500;
     font-size: $default-size;
+    margin-left: 15px;
+
+    .weekDetailsIcon {
+      color: var(--black);
+      margin-right: 10px;
+    }
+  }
+}
+
+.weekDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  position: relative;
+
+  .weekDetailsDiv {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px;
+  }
+
+  .weekDetailsDivDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media all and (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -14,61 +51,52 @@
   width: 100%;
   min-height: 50px;
   height: 5vw;
-  background-color: white;
+  background-color: var(--theme-primary);
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
+  border-radius: 5px;
   margin: 15px 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 25px;
   flex-wrap: wrap;
+  position: relative;
+
+  @media all and (max-width: 600px) {
+    flex-direction: row-reverse;
+    padding-left: 10px;
+    padding-right: 5px;
+    justify-content: center;
+
+    .detailName {
+      display: none;
+    }
+  }
 
   .detail_note {
     display: flex;
     align-items: center;
     font-size: $default-size;
-  }
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 
-  .detail_question_mark {
-    transition: 250ms;
-    min-height: 30px;
-    width: 2.5vw;
-    height: 2.5vw;
-    font-size: $default-size;
-    color: rgba(0, 0, 0, 0.25);
-    min-width: 30px;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin: 0px 10px;
-
-    @media (max-width: 750px) {
-      display: none;
-      margin: 0px;
+    @media all and (max-width: 600px) {
+      position: relative;
+      left: initial;
+      transform: translateX(0%);
+      margin-left: 10px;
     }
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.05);
-    }
-  }
-
-  .detail_question_mark:hover ~ .detailNote .detail_tooltip {
-    transform: translateY(-115%);
-    opacity: 1;
   }
 
   .detailName,
   .detailValue {
     font-weight: 500;
-    color: $black;
+    color: var(--black);
     font-size: $default-size;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     height: auto;
   }
 
@@ -86,6 +114,12 @@
     background-color: rgba(0, 255, 0, 0.1);
     margin: 10px 0px;
     position: relative;
+    cursor: pointer;
+
+    &:hover .detail_tooltip {
+      transform: translateY(-115%);
+      opacity: 1;
+    }
 
     .detail_tooltip {
       transition: 250ms;
@@ -93,21 +127,32 @@
       min-height: 105px;
       width: 12.5vw;
       height: 7.5vw;
-      border-radius: 25px;
-      background-color: white;
+      border-radius: 5px;
+      background: rgba(2, 48, 71, 0.75);
       position: absolute;
-      border: 1px solid lightgrey;
-      // box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.175);
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
       display: flex;
       justify-content: center;
       align-items: center;
-      color: rgba(0, 0, 0, 0.35);
+      color: white;
       transform: translateY(-110%);
       top: 0;
       white-space: pre-wrap;
       padding: 25px 15px;
       opacity: 0;
       pointer-events: none;
+
+      &::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-top: 10px solid rgba(2, 48, 71, 0.75);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        position: absolute;
+        bottom: 0;
+        transform: translateY(calc(100% - 0px));
+      }
     }
   }
 }
